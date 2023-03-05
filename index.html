@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Büyük Yarışma</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style>
+        html,
+        body {
+            margin: 0px;
+            height: 100%;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-image: url('burg.png');
+            background-size: 100% 100%; 
+        }
+        
+        #skor_board {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            padding: 1%;
+            width: 25%;
+            height: 20%;
+            background-color: #406882;
+            border-radius: 10px;
+            right: 10px;
+            color: aliceblue;
+            position: absolute;
+            font-size: 1.5em;
+            display: none;
+        }
+
+        #skor_board .d_y_baslik {
+            text-align: left;
+            width: 50%;
+            float: left;
+        }
+
+        #skor_board #dogru_sayisi,
+        #yanlis_sayisi {
+            text-align: right;
+            width: 40%;
+            float: left;
+        }
+
+        #skor_board #puan {
+            font-size: 2em;
+            text-align: center;
+            width: 80%;
+            margin: 13px;
+            float: left;
+        }
+
+        #soru_kutusu {
+            margin: auto;
+            padding: 1%;
+            width: 70%;
+            height: 53%;
+            background-color: #406882;
+            top: 28%;
+            position: relative;
+            border-radius: 30px;
+            box-shadow: 5px 10px black;
+            display: none;
+        }
+
+        #soru_kutusu #soru_metni {
+            font-size: 2em;
+            margin: auto;
+            margin-top: 1%;
+            margin-bottom: 1%;
+            background-color: #B1D0E0;
+            width: 90%;
+            border-radius: 20px;
+            height: 50%;
+            box-shadow: 0px 0px 10px inset darkcyan;
+            text-align: center;
+            padding: 2%;
+
+        }
+
+        #soru_kutusu #cevaplar {
+            text-align: center;
+
+            display: grid;
+            grid-template-columns: auto auto;
+        }
+
+        #soru_kutusu #a_sikki,
+        #b_sikki,
+        #c_sikki,
+        #d_sikki {
+            padding: 5px;
+            margin: 5px;
+            background-color: #5998AB;
+            border-radius: 10px;
+            font-size: 1.1em;
+            line-height: 1.1em;
+        }
+
+        .baslama_btn {
+            width: 30%;
+            height: 15%;
+            background-color: #406882;
+            font-size: 2em;
+            margin: auto;
+            border-radius: 50px;
+            position: absolute;
+            top: 45%;
+            left: 40%;
+
+        }
+
+        .baslama_btn:hover {
+            background-color: antiquewhite;
+            color: #406882;
+        }
+
+        .exit_btn {
+            width: 15%;
+            height: 10%;
+            background-color: #406882;
+            font-size: 2em;
+            margin: auto;
+            border-radius: 50px;
+            position: absolute;
+            top: 6%;
+            left: 22%;
+
+        }
+
+        .exit_btn:hover {
+            background-color: antiquewhite;
+            color: #406882;
+        }
+        
+ </style>
+
+</head>
+<body>
+
+    <button class="baslama_btn" onclick="soru_getir(0)">Start</button>
+    <button class="exit_btn" onclick="self.close()">Exit</button>
+
+    <div id="skor_board">
+        <div class="d_y_baslik">Correct</div>
+        <div id="dogru_sayisi">-</div>
+        <div class="d_y_baslik">False</div>
+        <div id="yanlis_sayisi">-</div>
+        <div id="puan">PUAN: <span id="puan_yazisi">-</span></div>
+    </div>
+
+    <div id="soru_kutusu">
+        <div id="soru_metni">Soru Metni</div>
+        <div id="cevaplar">
+            <div id="a_sikki" data-secim="A" onclick="verilen_cevap(this)">A </div>
+            <div id="b_sikki" data-secim="B" onclick="verilen_cevap(this)">B </div>
+            <div id="c_sikki" data-secim="C" onclick="verilen_cevap(this)">C </div>
+            <div id="d_sikki" data-secim="D" onclick="verilen_cevap(this)">D </div>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
